@@ -1,6 +1,8 @@
-// https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-    modules: ['@nuxtjs/apollo',],
+    modules: [
+      '@nuxtjs/apollo',
+      '@pinia/nuxt'
+    ],
     apollo: {
         clients: {
           default: {
@@ -8,4 +10,16 @@ export default defineNuxtConfig({
           },
         },
     },
+    pinia: {
+      autoImports: [
+        'defineStore',
+        ['defineStore', 'definePiniaStore'],
+      ],
+    },
+    css: [
+        '@/assets/styles/media.scss',
+        '@/assets/styles/main.scss',
+        '@/assets/styles/fonts/Montserrat.css',
+        'reset-css/reset.css',
+    ],
 })

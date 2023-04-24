@@ -11,6 +11,13 @@
   "devDependencies": {
     "@nuxtjs/apollo": "^5.0.0-alpha.6",
     "@types/node": "^18",
-    "nuxt": "^3.4.1"
+    "nuxt": "^3.4.1",
+    "sass": "^1.62.0",
+    "sass-loader": "^13.2.2"
+  },
+  "dependencies": {
+    "@pinia/nuxt": "^0.4.9",
+    "pinia": "^2.0.35",
+    "reset-css": "^5.0.1"
   }
 }
