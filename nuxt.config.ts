@@ -1,4 +1,19 @@
 export default defineNuxtConfig({
+    app: {
+      head: {
+          title: 'СНТ Дружба',
+          htmlAttrs: {
+              lang: 'ru'
+          },
+          meta: [
+              
+              { name: 'viewport', content: 'width=device-width, initial-scale=1' }
+          ],
+          script: [],
+          link: [],
+          style: []
+      },
+    },
     modules: [
       '@nuxtjs/apollo',
       '@pinia/nuxt'
