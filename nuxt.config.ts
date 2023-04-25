@@ -15,18 +15,21 @@ export default defineNuxtConfig({
       },
     },
     modules: [
-      // '@nuxtjs/apollo',
+      '@nuxtjs/apollo',
       '@pinia/nuxt'
     ],
-    // apollo: {
-    //     autoImports: true,
-    //     clients: {
-    //       default: {
-    //         tokenStorage: 'cookie',
-    //         httpEndpoint: 'http://localhost:3001/graphql'
-    //       },
-    //     },
-    // },
+    apollo: {
+      autoImports: true,
+      authType: 'Bearer',
+      authHeader: 'Authorization',
+      tokenStorage: 'cookie',
+        clients: {
+          default: {
+            // tokenStorage: 'cookie',
+            httpEndpoint: 'http://localhost:3001/graphql'
+          },
+        },
+    },
     pinia: {
       autoImports: [
         'defineStore',

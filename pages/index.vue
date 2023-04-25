@@ -51,19 +51,19 @@ export default {
     const lastNews = storeNews.getLastNews();
     const mainItems = storeMain.getMainItems();
 
-  //   const query = gql`
-  //   query findAll {
-  //     pets {
-  //       id
-  //       name
-  //     }
-  //   }
-  // `
+    const query = gql`
+    query findAll {
+      pets {
+        id
+        name
+      }
+    }
+  `
     let data = ref(0);
 
     async function onClick (){
-      // return ( data.value = await useAsyncQuery(query) );
-      return ( data.value++ );
+      return ( data.value = await useAsyncQuery(query) );
+      // return ( data.value++ );
     }
     return {
       storeMain,
@@ -71,7 +71,7 @@ export default {
       lastNews,
       mainItems,
       onClick,
-      // data,
+      data,
     }
   }
 }
