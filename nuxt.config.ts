@@ -19,8 +19,10 @@ export default defineNuxtConfig({
       '@pinia/nuxt'
     ],
     apollo: {
+        autoImports: true,
         clients: {
           default: {
+            tokenStorage: 'cookie',
             httpEndpoint: 'http://localhost:3001/graphql'
           },
         },
