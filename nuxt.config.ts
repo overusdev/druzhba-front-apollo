@@ -25,7 +25,7 @@ export default defineNuxtConfig({
       tokenStorage: 'cookie',
         clients: {
           default: {
-            // tokenStorage: 'cookie',
+            tokenStorage: 'cookie',
             httpEndpoint: 'http://localhost:3001/graphql'
           },
         },
