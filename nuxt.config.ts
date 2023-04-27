@@ -16,8 +16,16 @@ export default defineNuxtConfig({
     },
     modules: [
       '@nuxtjs/apollo',
+      // 'nuxt-graphql-client',
       '@pinia/nuxt'
     ],
+    // 'graphql-client':{
+    //     watch: true,
+    //     autoImport: true,
+    //     functionPrefix: 'Gql',
+    //     documentPaths: ['./'],
+    //     preferGETQueries: false
+    // },
     apollo: {
       autoImports: true,
       authType: 'Bearer',
@@ -30,6 +38,12 @@ export default defineNuxtConfig({
           },
         },
     },
+    // runtimeConfig: {
+    //   autoImport: true,
+    //   public: {
+    //     GQL_HOST: 'http://localhost:3001/graphql'
+    //   }
+    // },
     pinia: {
       autoImports: [
         'defineStore',

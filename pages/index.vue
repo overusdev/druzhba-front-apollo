@@ -52,24 +52,40 @@ export default {
     const mainItems = storeMain.getMainItems();
 
     const query = gql`
-    query findAll {
-      pets {
-        id
-        name
+      query findAll {
+        pets {
+          id
+          name
+        }
       }
-    }
-  `
-    let data = ref(0);
+    `
+    let data = ref(null);
 
     async function onClick (){
       return ( data.value = await useAsyncQuery(query) );
-      // return ( data.value++ );
     }
+
+    // const { dataTest } = await useAsyncGql({
+    //   operation: 'launches',
+    //   variables: { limit: 5 }
+    // });
+
+    // async function loadPets() {
+    //   return ( data.value = await GqlfindAll());
+    // }
+
+  //   async function loadPets() {
+
+  //     return ( data.value = await useAsyncGql({
+  //       operation: 'findAll',
+  //     }) )
+  //  }
     return {
       storeMain,
       storeNews,
       lastNews,
       mainItems,
+      // loadPets,
       onClick,
       data,
     }
