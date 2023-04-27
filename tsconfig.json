@@ -2,3 +2,12 @@
   // https://nuxt.com/docs/guide/concepts/typescript
   "extends": "./.nuxt/tsconfig.json"
 }
+
+// {
+//   "compilerOptions": {
+//     "typeRoots": ["node_modules/@types", "src/@types"],
+//   },
+//   // "files": ["src/@types/graphql.d.ts"],
+//   "include": ["src/**/*"],
+//   "exclude": ["node_modules", "**/*.spec.ts"]
+// }

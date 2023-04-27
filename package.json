@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "@pinia/nuxt": "^0.4.9",
+    "graphql-tag": "^2.12.6",
     "nuxt-graphql-client": "^0.2.27",
     "pinia": "^2.0.35",
     "reset-css": "^5.0.1"

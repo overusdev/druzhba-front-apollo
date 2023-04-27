@@ -39,6 +39,7 @@
 <script lang="js">
 import { useNews } from "~/stores/news";
 import { useMain } from '~/stores/mainItems';
+import gql from 'graphql-tag';
 
 definePageMeta({
   layout: "default",
