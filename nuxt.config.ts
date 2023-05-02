@@ -1,3 +1,5 @@
+import graphql from '@rollup/plugin-graphql';
+
 export default defineNuxtConfig({
     app: {
       head: {
@@ -56,4 +58,7 @@ export default defineNuxtConfig({
         '@/assets/styles/fonts/Montserrat.css',
         'reset-css/reset.css',
     ],
+    vite: {
+      plugins: [graphql()]
+    }
 })

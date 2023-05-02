@@ -10,6 +10,7 @@
   },
   "devDependencies": {
     "@nuxtjs/apollo": "^5.0.0-alpha.6",
+    "@rollup/plugin-graphql": "^2.0.3",
     "@types/node": "^18",
     "nuxt": "^3.4.1",
     "sass": "^1.62.0",
