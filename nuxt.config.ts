@@ -20,6 +20,18 @@ export default defineNuxtConfig({
       transpile: ['@nuxtjs/apollo'],
       analyze: true,
     },
+    nitro: {
+      esbuild: {
+        options: {
+          target: 'esnext',
+        },
+      },
+      prerender: {
+        crawlLinks: false,
+        routes: ['/'],
+        ignore: ['/hi'],
+      },
+    },
     modules: [
       '@nuxtjs/apollo',
       // 'nuxt-graphql-client',
