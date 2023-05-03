@@ -18,6 +18,7 @@
   },
   "dependencies": {
     "@pinia/nuxt": "^0.4.9",
+    "@vue/apollo-composable": "^4.0.0-beta.4",
     "graphql-tag": "^2.12.6",
     "nuxt-graphql-client": "^0.2.27",
     "pinia": "^2.0.35",

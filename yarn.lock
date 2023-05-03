@@ -1524,7 +1524,7 @@
   "resolved" "https://registry.npmjs.org/@vitejs/plugin-vue/-/plugin-vue-4.1.0.tgz"
   "version" "4.1.0"
 
-"@vue/apollo-composable@4.0.0-beta.4":
+"@vue/apollo-composable@^4.0.0-beta.4", "@vue/apollo-composable@4.0.0-beta.4":
   "integrity" "sha512-lErWL+9LGfWfdfrSYY3DQB/A8Asqs46MiKwmgKeKSj7fe01tx0UpH43aiwMGj+VgEzBZ9AfqEa/Bxf0Nff/NNw=="
   "resolved" "https://registry.npmjs.org/@vue/apollo-composable/-/apollo-composable-4.0.0-beta.4.tgz"
   "version" "4.0.0-beta.4"
