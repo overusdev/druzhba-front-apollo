@@ -16,6 +16,9 @@ export default defineNuxtConfig({
           style: []
       },
     },
+    build: {
+      transpile: ['@sentry/vue'],
+    },
     modules: [
       '@nuxtjs/apollo',
       // 'nuxt-graphql-client',
