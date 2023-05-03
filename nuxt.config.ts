@@ -17,7 +17,7 @@ export default defineNuxtConfig({
       },
     },
     build: {
-      transpile: ['@sentry/vue'],
+      analyze: true,
     },
     modules: [
       '@nuxtjs/apollo',

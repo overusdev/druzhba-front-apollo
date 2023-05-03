@@ -6,7 +6,8 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "analyze": "nuxt build --analyze"
   },
   "devDependencies": {
     "@nuxtjs/apollo": "^5.0.0-alpha.6",
