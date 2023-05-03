@@ -17,6 +17,7 @@ export default defineNuxtConfig({
       },
     },
     build: {
+      transpile: ['@nuxtjs/apollo'],
       analyze: true,
     },
     modules: [
