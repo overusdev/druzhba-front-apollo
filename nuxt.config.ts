@@ -44,7 +44,7 @@ export default defineNuxtConfig({
         clients: {
           default: {
             tokenStorage: 'cookie',
-            httpEndpoint: 'http://localhost:3001/graphql'
+            httpEndpoint: process.env.NODE_ENV ==='production' ? `${process.env.DOMAIN}/graphql` : 'http://localhost:3001/graphql'
           },
         },
     },
