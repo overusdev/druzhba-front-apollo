@@ -45,8 +45,6 @@ definePageMeta({
   layout: "default",
 });
 
-console.log('process', process);
-
 export default {
   setup() {
     const storeNews = useNews();
