@@ -4,7 +4,7 @@
       <div class="footer__wrapper">
         <div class="footer__item">© СНТ «ДРУЖБА»</div>
         <div class="footer__item">ст. Кеза Семеновский район <br> Нижегородской области</div>
-        <div class="footer__item">2022</div>
+        <div class="footer__item">{{ new Date().getFullYear() }}</div>
       </div>
     </div>
   </div>

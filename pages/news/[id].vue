@@ -6,7 +6,12 @@
         ></p>
         <p class="news-item__note-description" v-html="news.description"
         ></p>
-        <nuxt-img  v-if="news.imageLink" class="news-item__image" :src="`${news.imageLink}`" />
+        <nuxt-img
+          v-if="news.imageLink"
+          format="webp"
+          class="news-item__image"
+          :src="`${news.imageLink}`"
+        />
       </div>
     </div>
 </template>

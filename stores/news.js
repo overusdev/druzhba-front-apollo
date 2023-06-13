@@ -34,20 +34,7 @@ export const useNews = defineStore('news', () => {
             <ul class="news-list">
                 <li class="news-list__item">Предоставление копий правоустанавливающих документов  (свидетельства, выписки из ЕГРН)  в Правление</li>
                 <li class="news-list__item">Получение членской книжки или ее обновление.</li>
-            </ul>
-            Реквизиты для оплаты:
-
-            <ul class="news-list">
-                <li class="news-list__item">СНТ "ДРУЖБА"</li>
-                <li class="news-list__item">Расчётный счёт: 40703810142000001866</li>
-                <li class="news-list__item">Банк: ВОЛГО-ВЯТСКИЙ БАНК ПАО СБЕРБАНК</li>
-                <li class="news-list__item">БИК: 042202603</li>
-                <li class="news-list__item">Кор. Cчёт: 30101810900000000603</li>
-                <li class="news-list__item">ОГРН: 1025201075899</li>
-                <li class="news-list__item">ИНН: 5228007926</li>
-                <li class="news-list__item">КПП: 522801001</li>
-            </ul>
-            `
+            </ul>`
             ,
             date: '13.06.2022',
             link: '/news/4',

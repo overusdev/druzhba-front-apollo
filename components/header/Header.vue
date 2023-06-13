@@ -2,18 +2,21 @@
   <div class="header">
     <div class="container">
       <div class="header__wrapper">
-        <NuxtLink
-          to="/"
-        >
-          <div class="header__logo-wrapper">
-            <img 
-              src="~/assets/images/header/Logo.png"
-              alt="Лого"
-              class="header__logo"
-            >
-            <p class="header__logo-note">садовое некоммерческое товарищество</p>
-          </div>
-        </NuxtLink>
+        <div class="header__link-wrapper">
+          <NuxtLink
+            to="/"
+          >
+            <div class="header__logo-wrapper">
+              <img 
+                src="~/assets/images/header/Logo.png"
+                alt="Лого"
+                class="header__logo"
+              >
+              <p class="header__logo-note">садовое некоммерческое товарищество</p>
+            </div>
+          </NuxtLink>
+          <p class="header__logo-note">ИНН: 5228007926</p>
+        </div>
         <div
           class="header__menu"
           :class="{ 'header__menu_active' : store.getActive() }"

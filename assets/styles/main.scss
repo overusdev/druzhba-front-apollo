@@ -17,3 +17,11 @@ ul.news-list {
         list-style: circle;
     }
 }
+
+ul.doc-list {
+    margin-left: 24px;
+
+    .doc-list__item {
+        list-style: circle;
+    }
+}
