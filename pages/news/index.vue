@@ -27,7 +27,7 @@ export default {
   components: { PageTitle },
   setup() {
     const storeNews = useNews();
-    const allNews = storeNews.news;
+    const allNews = storeNews.news.reverse();
     return {
       PageTitle,
       allNews

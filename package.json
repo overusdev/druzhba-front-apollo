@@ -10,6 +10,7 @@
     "analyze": "nuxt build --analyze"
   },
   "devDependencies": {
+    "@nuxt/image": "^1.0.0-rc.1",
     "@nuxtjs/apollo": "^5.0.0-alpha.6",
     "@rollup/plugin-graphql": "^2.0.3",
     "@types/node": "^18",

@@ -4,6 +4,9 @@
         <PageTitle :title="news.title"/>
         <p class="news-item__note-description" v-html="news.noteDescription"
         ></p>
+        <p class="news-item__note-description" v-html="news.description"
+        ></p>
+        <nuxt-img  v-if="news.imageLink" class="news-item__image" :src="`/news/${news.imageLink}`" />
       </div>
     </div>
 </template>
@@ -19,10 +22,10 @@ export default {
     const route = useRoute();
     const news = store.getNewsById({ id: route.params.id });
 
-    onMounted(() => {
-      console.log("Component is mounted!", route.params.id );
+    // onMounted(() => {
+    //   console.log("Component is mounted!", route.params.id );
 
-    });
+    // });
 
     return {
       store,
@@ -40,8 +43,12 @@ export default {
 
     &__note-description {
       margin-top: 24px;
-      line-height: 1.6;
+      line-height: 1.8;
     }
 
+    &__image {
+      width: 100%;
+      height: auto;
+    }
   }
 </style>

@@ -16,8 +16,8 @@
             >
               Подробнее
             </Nuxt-link>
-            <pre>{{ data?.data?.pets.length }}</pre>
-            <button @click="onClick">click</button>
+            <!-- <pre>{{ data?.data?.pets.length }}</pre>
+            <button @click="onClick">click</button> -->
           </div>
 
             <img

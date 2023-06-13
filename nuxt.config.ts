@@ -34,8 +34,12 @@ export default defineNuxtConfig({
     },
     modules: [
       '@nuxtjs/apollo',
-      '@pinia/nuxt'
+      '@pinia/nuxt',
+      '@nuxt/image',
     ],
+    image: {
+      dir: 'assets/images'
+    },
     apollo: {
       autoImports: true,
       authType: 'Bearer',

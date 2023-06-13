@@ -1,11 +1,13 @@
 <template>
-    <div class="main-items">
+    <div
+        class="main-items"
+        :class="{ 'main-items--full' : fullItemsWrapper() }">
         <NuxtLink
             v-for="item in items"
             :key="item.id"
             :to="item.link"
             class="main-items__link"
-            :class="{ 'main-items__link--inner' : inner }"
+            :class="itemsClasses"
         >
 
             <span
@@ -44,10 +46,18 @@
             // console.log(props);
             // const store = useMain();
             // const items = store.getMainItems();
+            const itemsClasses = computed(() => ({
+                'main-items__link--inner' : props.inner,
+                'main-items__link--right-indent' : !fullItemsWrapper(),
+            }));
+            function fullItemsWrapper() {
+                return props.items.length > 2;
+            }
 
-            // return {
-            //     props.items,
-            // }
+            return {
+                fullItemsWrapper,
+                itemsClasses,
+            }
         }
     }
 </script>
@@ -62,9 +72,14 @@
 
         @include desktop {
             flex-direction: row;
-            justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
+        }
+
+        &--full {
+            @include desktop {
+                justify-content: space-between;
+            }
         }
 
         &__link {
@@ -105,6 +120,11 @@
                 width: 100%;
                 @include desktop {
                     width: 350px;
+                }
+            }
+            &--right-indent {
+                @include desktop {
+                    margin-right: 24px;
                 }
             }
         }

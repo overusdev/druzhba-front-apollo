@@ -9,3 +9,11 @@ body {
 .page-enter, .page-leave-active {
     opacity: 0;
 }
+
+ul.news-list {
+    margin-left: 24px;
+
+    .news-list__item {
+        list-style: circle;
+    }
+}
