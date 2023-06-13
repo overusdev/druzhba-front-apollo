@@ -38,7 +38,8 @@ export default defineNuxtConfig({
       '@nuxt/image',
     ],
     image: {
-      dir: 'assets/images'
+      dir: 'assets/images',
+      provider: "ipx"
     },
     apollo: {
       autoImports: true,
