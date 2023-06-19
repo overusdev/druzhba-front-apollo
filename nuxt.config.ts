@@ -35,12 +35,7 @@ export default defineNuxtConfig({
     modules: [
       '@nuxtjs/apollo',
       '@pinia/nuxt',
-      '@nuxt/image',
     ],
-    image: {
-      // dir: 'static',
-      provider: "ipx"
-    },
     apollo: {
       autoImports: true,
       authType: 'Bearer',
