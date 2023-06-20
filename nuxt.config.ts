@@ -36,6 +36,9 @@ export default defineNuxtConfig({
       '@nuxtjs/apollo',
       '@pinia/nuxt',
     ],
+    plugins: [
+      { src: '~/plugins/ymapPlugin.js',  mode: 'client' }
+    ],
     apollo: {
       autoImports: true,
       authType: 'Bearer',
