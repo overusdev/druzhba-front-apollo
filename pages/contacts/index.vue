@@ -1,16 +1,20 @@
 <template>
   <div class="contacts">
     <div class="container">
-      <PageTitle title="Контакты"/>
+      <PageTitle title="Контакты" class="contacts__page-title"/>
       <client-only>
-        <YandexMap
+        <img src="~/assets/images/contacts/contacts_sсheme.png"
+          alt="Схема СНТ Дружба"
+          class="contacts__scheme"
+        >
+        <!-- <YandexMap
           :coordinates="coordinates"
           :detailed-controls="detailedControls"
           marker-id="index"
           map-type="map"
           zoom="15"
           type="Point"
-        />
+        /> -->
       </client-only>
     </div>
   </div>
@@ -39,7 +43,17 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
+
+.contacts {
+  &__page-title {
+    margin-bottom: 24px;
+  }
+
+  &__scheme {
+    width: 100%;
+  }
+}
 .yandex-container {
   height: 400px;
 }
