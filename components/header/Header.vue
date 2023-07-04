@@ -12,7 +12,7 @@
                 alt="Лого"
                 class="header__logo"
               >
-              <p class="header__logo-note">садовое некоммерческое товарищество</p>
+              <p class="header__logo-note">садоводческое некоммерческое товарищество</p>
             </div>
           </NuxtLink>
           <p class="header__logo-note">ИНН: 5228007926</p>
