@@ -17,7 +17,10 @@ export default defineNuxtConfig({
       },
     },
     build: {
-      transpile: ['@nuxtjs/apollo'],
+      transpile: [
+        '@nuxtjs/apollo',
+        'tslib',
+      ],
       analyze: true,
     },
     nitro: {
