@@ -1,30 +1,31 @@
 <template>
-    <div class="news-item">
+    <div class="ads-item">
       <div class="container">
-        <PageTitle :title="news.title"/>
-        <p class="news-item__note-description" v-html="news.noteDescription"
+        <PageTitle :title="ads.title"/>
+        <p class="ads-item__note-description" v-html="ads.noteDescription"
         ></p>
-        <p class="news-item__note-description" v-html="news.description"
+        <p class="ads-item__note-description" v-html="ads.description"
         ></p>
+        <nuxt-img :src="`/${ads.imageLink}`" class="ads-item__image" />
       </div>
     </div>
 </template>
 
 <script lang="ts">
-import { useNews } from "~/stores/news";
+import { useAds } from "~/stores/ads";
 import PageTitle from '~/components/page-title/PageTitle.vue';
 
 export default {
   components: { PageTitle },
   setup() {
-    const store = useNews();
+    const store = useAds();
     const route = useRoute();
-    const news = store.getNewsById({ id: route.params.id });
+    const ads = store.getAdsById({ id: route.params.id });
 
     return {
       store,
       route,
-      news
+      ads
     }
   }
 }
@@ -33,7 +34,7 @@ export default {
 <style lang="scss" scoped>
 @import '~/assets/styles/media.scss';
 
-  .news-item {
+  .ads-item {
 
     &__note-description {
       margin-top: 24px;

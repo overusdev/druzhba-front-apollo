@@ -38,7 +38,11 @@ export default defineNuxtConfig({
     modules: [
       '@nuxtjs/apollo',
       '@pinia/nuxt',
+      '@nuxt/image',
     ],
+    image: {
+      inject: true
+    },
     plugins: [
       { src: '~/plugins/ymapPlugin.js',  mode: 'client' }
     ],
