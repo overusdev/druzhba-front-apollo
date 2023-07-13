@@ -4,12 +4,12 @@ module.exports = {
       {
         name: 'DruzbaFront',
         port: '3000',
-        //exec_mode: 'cluster',
+        exec_mode: 'cluster',
         instances: 'max',
         watch: true,
         script: './.output/server/index.mjs',
         instances   : os.cpus().length,
-        exec_mode   : 'fork',
+        //exec_mode   : 'fork',
         env: {
             NODE_ENV: "production",
         }
