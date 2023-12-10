@@ -71,6 +71,14 @@ export default defineNuxtConfig({
         'reset-css/reset.css',
     ],
     vite: {
-      plugins: [graphql()]
+      plugins: [graphql()],
+      // server: {
+      //   watch: {
+      //     usePolling: true,
+      //   },
+      //   // host: true,
+      //   strictPort: true,
+      //   // port: 8002
+      // }
     }
 })

@@ -3,14 +3,16 @@
       <div class="container">
         <div class="main__head">
           <pre>{{ variables }}</pre>
+          <pre>updateVariables: {{ updateVariables }}</pre>
         </div>
         <div class="test">
+          <UpdatePopup :item="updateVariables" />
           <div
             class="test__result"
             v-for="(item, i) in petsList"
             :key="i"
           >
-            <div class="test__result-wrapper">
+            <div class="test__result-wrapper" @click="showUpdatePopup({ item: item })">
               <span class="test__result-header">ID: {{ item.id }} </span>
               <span>Name: "{{ item.name }}" Type: {{ item.type || "Not set" }}</span>
             </div>
@@ -33,8 +35,15 @@
 </template>
 
 <script lang="ts" setup>
+import UpdatePopup from '~/components/UI/UpdatePopup.vue';
+let isShowUpdatePopup = ref(false);
 let petsQueryResult = reactive([]);
 const variables = ref({
+  name: '',
+  type: ''
+})
+const updateVariables = ref({
+  id: null,
   name: '',
   type: ''
 })
@@ -79,6 +88,11 @@ const createComment = async () => {
     console.log({ error });
   }
 };
+
+function showUpdatePopup({ item }) {
+  updateVariables.value = item;
+  isShowUpdatePopup.value = !isShowUpdatePopup.value;
+}
 
 await initPets();
 
