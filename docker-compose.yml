@@ -1,0 +1,19 @@
+version: '3.3'
+
+services:
+  nuxt:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: druzhba-nn.site
+    container_name: druzhba-nn.site
+    # restart: always
+    # command: npm run dev
+    # volumes:
+    # - .:/app
+    # - /app/node_modules
+    volumes:
+      - .:/var/www/html/druzhba-nn.site
+      - "/var/www/html/druzhba-nn.site/node_modules"
+    ports:
+      - "8002:3000"
