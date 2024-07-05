@@ -1,33 +1,58 @@
 <template>
     <div class="ads-item">
       <div class="container">
-        <PageTitle :title="ads.title"/>
-        <p class="ads-item__note-description" v-html="ads.noteDescription"
+        <PageTitle :title="adData.name"/>
+        <p class="ads-item__note-description" v-html="adData.theme"
         ></p>
-        <p class="ads-item__note-description" v-html="ads.description"
-        ></p>
-        <nuxt-img :src="`/${ads.imageLink}`" class="ads-item__image" />
       </div>
     </div>
 </template>
 
-<script lang="ts">
-import { useAds } from "~/stores/ads";
+<script lang="js">
 import PageTitle from '~/components/page-title/PageTitle.vue';
 
 export default {
-  components: { PageTitle },
-  setup() {
-    const store = useAds();
+  setup () {
+    const router = useRouter();
     const route = useRoute();
-    const ads = store.getAdsById({ id: route.params.id });
+    const adData = reactive({
+        name: '',
+        theme: '',
+    });
+    const AD = gql`
+        query findOne($id: Int!) {
+            ad(id: $id) {
+              id
+              name
+              theme
+            }
+        }
+    `;
+    const { result, loading, error, refetch } = useQuery(AD, () => ({
+        id: Number(route.params.id),
+    }));
+    const ad = computed(() => result ?? {});
 
-    return {
-      store,
-      route,
-      ads
-    }
-  }
+    onMounted(async () => {
+        const refetchQuery = await refetch();
+        if(refetchQuery.data.ad) {
+            adData.id = refetchQuery.data.ad.id;
+            adData.name = refetchQuery.data.ad.name;
+            adData.theme = refetchQuery.data.ad.theme;
+        }
+    });
+
+        return {
+            adData,
+            result,
+            loading,
+            refetch,
+            router,
+            route,
+            ad,
+            PageTitle,
+        }
+    },
 }
 </script>
 

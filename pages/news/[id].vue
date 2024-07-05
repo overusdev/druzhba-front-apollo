@@ -2,8 +2,6 @@
     <div class="news-item">
       <div class="container">
         <PageTitle :title="newsData.name"/>
-        <!-- <p class="news-item__note-description" v-html="news.noteDescription"
-        ></p> -->
         <p class="news-item__note-description" v-html="newsData.theme"
         ></p>
       </div>
@@ -11,7 +9,6 @@
 </template>
 
 <script lang="js">
-import { useNews } from "~/stores/news";
 import PageTitle from '~/components/page-title/PageTitle.vue';
 
 export default {
