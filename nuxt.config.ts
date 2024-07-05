@@ -1,4 +1,5 @@
 import graphql from '@rollup/plugin-graphql';
+// const runtimeConfig = useRuntimeConfig();
 
 export default defineNuxtConfig({
     app: {
@@ -44,7 +45,8 @@ export default defineNuxtConfig({
       inject: true
     },
     plugins: [
-      { src: '~/plugins/ymapPlugin.js',  mode: 'client' }
+      { src: '~/plugins/ymapPlugin.js',  mode: 'client' },
+      { src: '~/plugins/apollo.js',  mode: 'client' },
     ],
     apollo: {
       autoImports: true,
@@ -76,9 +78,18 @@ export default defineNuxtConfig({
       //   watch: {
       //     usePolling: true,
       //   },
-      //   // host: true,
+      //   host: true,
       //   strictPort: true,
-      //   // port: 8002
+      //   port: 8002
       // }
-    }
+    },
+    // runtimeConfig: {
+    //   apiUrl: NUXT_API_URL,
+    //   // Private config that is only available on the server
+    //   apiSecret: '123',
+    //   // Config within public will be also exposed to the client
+    //   public: {
+    //     apiBase: '/api'
+    //   }
+    // },
 })

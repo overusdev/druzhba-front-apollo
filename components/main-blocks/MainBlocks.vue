@@ -43,9 +43,6 @@
             more: Boolean,
         },
         setup(props) {
-            // console.log(props);
-            // const store = useMain();
-            // const items = store.getMainItems();
             const itemsClasses = computed(() => ({
                 'main-items__link--inner' : props.inner,
                 'main-items__link--right-indent' : !fullItemsWrapper(),
@@ -71,6 +68,7 @@
         flex-direction: column;
 
         @include desktop {
+            gap: 24px;
             flex-direction: row;
             align-items: center;
             flex-wrap: wrap;
@@ -78,7 +76,7 @@
 
         &--full {
             @include desktop {
-                justify-content: space-between;
+                // justify-content: space-between;
             }
         }
 

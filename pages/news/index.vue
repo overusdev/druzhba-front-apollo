@@ -21,16 +21,52 @@
 
 <script lang="js">
 import PageTitle from '~/components/page-title/PageTitle';
-import { useNews } from "~/stores/news";
 
 export default {
   components: { PageTitle },
-  setup() {
-    const storeNews = useNews();
-    const allNews = storeNews.news.reverse();
+  setup () {
+    const newsData = ref({
+        name: '',
+        theme: '',
+        date: '',
+    });
+    const NEWS = gql`
+        query findAll($take: Int!) {
+            news(take: $take) {
+              id
+              name
+              theme
+              date
+            }
+        }
+    `;
+    const { result, loading, error, refetch } = useQuery(NEWS, () => ({
+        take: 500,
+    }));
+    const news = computed(() => result.value?.news ?? []);
+    const allNews = computed(() => { 
+        return news.value.map(function(obj) {
+            return {
+              'link': `/news/${obj.id}`,
+              'date': obj.date,
+              'title': obj.name,
+            };
+        });
+    });
+
+    onMounted(async () => {
+        await refetch();
+    });
+
     return {
+      result,
+      loading,
+      newsData,
+      error,
+      refetch,
+      news,
       PageTitle,
-      allNews
+      allNews,
     }
   }
 }
