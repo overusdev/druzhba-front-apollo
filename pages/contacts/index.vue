@@ -3,8 +3,14 @@
     <div class="container">
       <PageTitle title="Контакты" class="contacts__page-title"/>
       <client-only>
+        <p class="contacts__title">Схема СНТ Дружба</p>
         <img src="~/assets/images/contacts/contacts_sсheme.png"
           alt="Схема СНТ Дружба"
+          class="contacts__scheme"
+        >
+        <p class="contacts__title">Ортофотоплан СНТ Дружба</p>
+        <img src="~/assets/images/contacts/ortophotoplan.png"
+          alt="Оотофотоплан СНТ Дружба"
           class="contacts__scheme"
         >
         <!-- <YandexMap
@@ -52,6 +58,12 @@ export default {
 
   &__scheme {
     width: 100%;
+    margin-bottom: 32px;
+  }
+
+  &__title {
+    font-weight: bold;
+    margin-bottom: 24px;
   }
 }
 .yandex-container {
