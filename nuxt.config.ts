@@ -70,7 +70,7 @@ export default defineNuxtConfig({
         '@/assets/styles/media.scss',
         '@/assets/styles/main.scss',
         '@/assets/styles/fonts/Montserrat.css',
-        'reset-css/reset.css',
+        // 'reset-css/reset.css',
     ],
     vite: {
       plugins: [graphql()],

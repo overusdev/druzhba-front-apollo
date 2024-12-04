@@ -64,11 +64,18 @@ export default {
     &__note-description {
       margin-top: 24px;
       line-height: 1.8;
+      strong {
+        font-weight: bold !important;
+      }
     }
 
     &__image {
       width: 100%;
       height: auto;
     }
+  }
+
+  strong {
+    font-weight: bold !important;
   }
 </style>
