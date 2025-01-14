@@ -1,7 +1,7 @@
 <template>
     <div class="docs-item">
       <div class="container">
-        <PageTitle :title="doc.title"/>
+        <!-- <PageTitle :title="doc.title"/>
         <p 
             v-if="doc.noteDescription"
             class="docs-item__note-description"
@@ -11,28 +11,71 @@
             v-if="doc.description"
             class="docs-item__note-description"
             v-html="doc.description"
+        ></p> -->
+        <PageTitle :title="docsData.title"/>
+        <p class="news-item__note-description" v-html="docsData.theme"
         ></p>
 
       </div>
     </div>
 </template>
 
-<script lang="ts">
+<script lang="js">
 import { useDocs } from "~/stores/docs";
 import PageTitle from '~/components/page-title/PageTitle.vue';
 
 export default {
   components: { PageTitle },
   setup() {
-    const store = useDocs();
+    const router = useRouter();
     const route = useRoute();
-    const doc = store.getDocsById({ id: route.params.id });
+    // const news = store.getNewsById({ id: route.params.id });
+    const docsData = reactive({
+        title: '',
+        theme: '',
+    });
+    const DOCS = gql`
+        query findOne($id: Int!) {
+            doc(id: $id) {
+              id
+              title
+              theme
+            }
+        }
+    `;
+    const { result, loading, error, refetch } = useQuery(DOCS, () => ({
+        id: Number(route.params.id),
+    }));
+    const docs = computed(() => result ?? {});
 
-    return {
-      store,
-      route,
-      doc
-    }
+    onMounted(async () => {
+        const refetchQuery = await refetch();
+        if(refetchQuery.data.doc) {
+            docsData.id = refetchQuery.data.doc.id;
+            docsData.title = refetchQuery.data.doc.title;
+            docsData.theme = refetchQuery.data.doc.theme;
+        }
+    });
+
+      return {
+          docsData,
+          result,
+          loading,
+          refetch,
+          router,
+          route,
+          docs,
+          PageTitle,
+      }
+    // const store = useDocs();
+    // const route = useRoute();
+    // const doc = store.getDocsById({ id: route.params.id });
+
+    // return {
+    //   store,
+    //   route,
+    //   doc
+    // }
   }
 }
 </script>

@@ -27,47 +27,47 @@ export default {
   components: { PageTitle },
   setup () {
     const storeNews = useNews();
-    const allNews = storeNews.news.reverse();
-    // const newsData = ref({
-    //     name: '',
-    //     theme: '',
-    //     date: '',
-    // });
-    // const NEWS = gql`
-    //     query findAll($take: Int!) {
-    //         news(take: $take) {
-    //           id
-    //           name
-    //           theme
-    //           date
-    //         }
-    //     }
-    // `;
-    // const { result, loading, error, refetch } = useQuery(NEWS, () => ({
-    //     take: 500,
-    // }));
-    // const news = computed(() => result.value?.news ?? []);
-    // const allNews = computed(() => { 
-    //     return news.value.map(function(obj) {
-    //         return {
-    //           'link': `/news/${obj.id}`,
-    //           'date': obj.date,
-    //           'title': obj.name,
-    //         };
-    //     });
-    // });
+    // const allNews = storeNews.news.reverse();
+    const newsData = ref({
+        name: '',
+        theme: '',
+        date: '',
+    });
+    const NEWS = gql`
+        query findAll($take: Int!) {
+            news(take: $take) {
+              id
+              name
+              theme
+              date
+            }
+        }
+    `;
+    const { result, loading, error, refetch } = useQuery(NEWS, () => ({
+        take: 500,
+    }));
+    const news = computed(() => result.value?.news ?? []);
+    const allNews = computed(() => { 
+        return news.value.map(function(obj) {
+            return {
+              'link': `/news/${obj.id}`,
+              'date': obj.date,
+              'title': obj.name,
+            };
+        });
+    });
 
-    // onMounted(async () => {
-    //     await refetch();
-    // });
+    onMounted(async () => {
+        await refetch();
+    });
 
     return {
-      // result,
-      // loading,
-      // newsData,
-      // error,
-      // refetch,
-      // news,
+      result,
+      loading,
+      newsData,
+      error,
+      refetch,
+      news,
       PageTitle,
       allNews,
     }

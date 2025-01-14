@@ -2,9 +2,9 @@
   <div class="contacts">
     <div class="container">
       <PageTitle title="Контакты" class="contacts__page-title"/>
-        <!-- <p class="news-item__note-description" v-html="contactsData.theme"
-        ></p> -->
-      <client-only>
+        <p class="news-item__note-description" v-html="contactsData.theme"
+        ></p>
+      <!-- <client-only>
         <p class="contacts__title">Схема СНТ Дружба</p>
         <img src="~/assets/images/contacts/contacts_sсheme.png"
           alt="Схема СНТ Дружба"
@@ -15,6 +15,8 @@
           alt="Оотофотоплан СНТ Дружба"
           class="contacts__scheme"
         >
+
+      </client-only> -->
         <!-- <YandexMap
           :coordinates="coordinates"
           :detailed-controls="detailedControls"
@@ -23,7 +25,6 @@
           zoom="15"
           type="Point"
         />-->
-      </client-only>
     </div>
   </div>
 </template>
@@ -41,40 +42,40 @@ export default {
     const coordinates = [56.645999, 44.168635];
     const controls = ['fullscreenControl'];
     const detailedControls = { zoomControl: { position: { right: 10, top: 50 } } };
-    // const contactsData = reactive({
-    //     theme: '',
-    // });
-    // const CONTACTS = gql`
-    //     query findOne($id: Int!) {
-    //         contact(id: $id) {
-    //             id
-    //             theme
-    //         }
-    //     }
-    // `;
-    // const { result, loading, error, refetch } = useQuery(CONTACTS, () => ({
-    //     id: 1,
-    // }));
-    // const contacts = computed(() => result ?? {});
+    const contactsData = reactive({
+        theme: '',
+    });
+    const CONTACTS = gql`
+        query findOne($id: Int!) {
+            contact(id: $id) {
+                id
+                theme
+            }
+        }
+    `;
+    const { result, loading, error, refetch } = useQuery(CONTACTS, () => ({
+        id: 1,
+    }));
+    const contacts = computed(() => result ?? {});
 
-    // onMounted(async () => {
-    //     const refetchQuery = await refetch();
-    //     if(refetchQuery.data.contact) {
-    //         contactsData.theme = refetchQuery.data.contact.theme;
-    //     }
-    // });
+    onMounted(async () => {
+        const refetchQuery = await refetch();
+        if(refetchQuery.data.contact) {
+            contactsData.theme = refetchQuery.data.contact.theme;
+        }
+    });
     return {
       store,
       PageTitle,
-      // coordinates,
-      // controls,
-      // detailedControls,
+      coordinates,
+      controls,
+      detailedControls,
       
-      // contactsData,
-      // result,
-      // loading,
-      // refetch,
-      // contacts,
+      contactsData,
+      result,
+      loading,
+      refetch,
+      contacts,
     }
   }
 }
