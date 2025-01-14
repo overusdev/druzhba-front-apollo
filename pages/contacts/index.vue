@@ -2,7 +2,7 @@
   <div class="contacts">
     <div class="container">
       <PageTitle title="Контакты" class="contacts__page-title"/>
-        <p class="news-item__note-description" v-html="contactsData.theme"
+        <p class="contacts__note-description" v-html="contactsData.theme"
         ></p>
       <!-- <client-only>
         <p class="contacts__title">Схема СНТ Дружба</p>
@@ -96,6 +96,13 @@ export default {
   &__title {
     font-weight: bold;
     margin-bottom: 24px;
+  }
+
+  &__note-description {
+    :deep(img) {
+      width: 100%;
+      height: auto;
+    }
   }
 }
 .yandex-container {
