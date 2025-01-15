@@ -1,104 +1,69 @@
 <template>
-    <div class="main">
-      <div class="container">
-        <div class="main__head">
+  <div class="main">
+    <div class="container">
+      <div class="main__head">
+        <div class="main__last-news">
+          <p class="main__last-news-title" v-html="newsData.name"></p>
+          <p class="main__last-news-description" v-html="newsData.theme"></p>
 
-          <div class="main__last-news">
-            <h2 class="main__last-news-title">{{ lastNews.title }}</h2>
-            <p
-              class="main__last-news-description"
-              v-html="lastNews.noteDescription"
-            ></p>
-
-            <Nuxt-link
-              class="main__last-news-more"
-              :to="`/news/${lastNews.id}`"
-            >
-              Подробнее
-            </Nuxt-link>
-            <!-- <pre>{{ data?.data?.pets.length }}</pre>
-            <button @click="onClick">click</button> -->
-          </div>
-
-            <img
-              src="~/assets/images/garden.png"
-              alt="Лого"
-              class="main__pic"
-            >
-
+          <Nuxt-link class="main__last-news-more" :to="`/news/${newsData.id}`">
+            Подробнее
+          </Nuxt-link>
         </div>
 
-        <div class="main__body">
-          <MainBlocks
-          :items="mainItems"/>
-        </div>
+        <img src="~/assets/images/garden.png" alt="Лого" class="main__pic">
+      </div>
+
+      <div class="main__body">
+        <MainBlocks :items="mainItems" />
       </div>
     </div>
+  </div>
 </template>
 
-<script lang="js">
-import { useNews } from "~/stores/news";
+<script setup lang="ts">
 import { useMain } from '~/stores/mainItems';
 import gql from 'graphql-tag';
 
-definePageMeta({
-  layout: "default",
-});
+    definePageMeta({
+      layout: "default",
+    });
 
-console.log(process.env.NODE_ENV);
-
-export default {
-  setup() {
-    const storeNews = useNews();
     const storeMain = useMain();
-    const lastNews = storeNews.getLastNews();
     const mainItems = storeMain.getMainItems();
+    const newsData = ref({
+      id: '',
+      name: '',
+      theme: '',
+      date: '',
+    });
+    const NEWS = gql`
+            query findAll($take: Int!) {
+                news(take: $take) {
+                  id
+                  name
+                  theme
+                  date
+                }
+            }
+        `;
+    async function initPets() {
+      const { data } = await useAsyncQuery(NEWS, { take: 500 });
 
-    const query = gql`
-      query findAll {
-        pets {
-          id
-          name
-        }
+      if (data?.value?.news) {
+        newsData.value.id = data.value.news[0].id;
+        newsData.value.name = data.value.news[0].name;
+        newsData.value.theme = data.value.news[0].theme;
+        newsData.value.date = data.value.news[0].date;
       }
-    `
-    let data = ref(null);
-
-    async function onClick (){
-      return ( data.value = await useAsyncQuery(query) );
     }
 
-    // const { dataTest } = await useAsyncGql({
-    //   operation: 'launches',
-    //   variables: { limit: 5 }
-    // });
-
-    // async function loadPets() {
-    //   return ( data.value = await GqlfindAll());
-    // }
-
-  //   async function loadPets() {
-
-  //     return ( data.value = await useAsyncGql({
-  //       operation: 'findAll',
-  //     }) )
-  //  }
-    return {
-      storeMain,
-      storeNews,
-      lastNews,
-      mainItems,
-      // loadPets,
-      onClick,
-      data,
-    }
-  }
-}
-
+    await initPets();
 </script>
 
 <style lang="scss" scoped>
 @import '~/assets/styles/media.scss';
+
 .main {
   &__head {
     display: flex;
@@ -116,6 +81,7 @@ export default {
 
   &__last-news {
     margin-bottom: 16px;
+
     @include desktop {
       max-width: 410px;
       padding: 0;
@@ -157,6 +123,7 @@ export default {
 
   &__pic {
     width: 100%;
+
     @include desktop {
       width: 531px;
       height: 344px;
