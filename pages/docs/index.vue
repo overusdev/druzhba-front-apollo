@@ -91,13 +91,16 @@ export default {
     }
 
     &__item-link {
-      display: block;
+      position: relative;
+      display: flex;
+      align-items: center;
       font-weight: 400;
       font-size: 20px;
       line-height: 24px;
       margin-bottom: 30px;
       text-decoration: none;
       color: #000;
+      padding-left: 12px;
 
       &:visited {
         color: #000;
@@ -114,6 +117,16 @@ export default {
         &:hover {
           color: #307526;
         }
+      }
+
+      &:before {
+        content: '';
+        position: absolute;
+        left: 0;
+        width: 6px;
+        height: 6px;
+        background-color: #000;
+        border-radius: 50%;
       }
     }
   }

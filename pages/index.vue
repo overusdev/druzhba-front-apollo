@@ -7,6 +7,10 @@
           <span v-if="newsData.theme" class="main__last-news-description" v-html="newsData.theme"/>
           <Nuxt-link class="main__last-news-more" :to="`/news/${newsData.id}`">
             Подробнее
+            <MdiIcon
+              icon="mdiChevronRight"
+              class="main__last-news-icon-right"
+            />
           </Nuxt-link>
         </div>
 
@@ -106,18 +110,24 @@ import gql from 'graphql-tag';
   }
 
   &__last-news-more {
+    display: inline-flex;
+    align-items: center;
     font-weight: 400;
     font-size: 18px;
     line-height: 22px;
-    background: #307526;
-    text-transform: uppercase;
-    padding: 12px;
-    color: #fff;
+    background: #f2f2f2;
+    padding: 12px 16px;
+    color: #000;
+    text-decoration: none;
+    border-radius: 6px;
 
     @include desktop {
-      padding: 5px 10px;
+      padding: 12px 16px;
       cursor: pointer;
     }
+  }
+  &__last-news-icon-right {
+    margin-left: 4px;
   }
 
   &__pic {

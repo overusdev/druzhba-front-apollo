@@ -22,9 +22,13 @@
     "@pinia/nuxt": "^0.4.9",
     "@sentry/vue": "^7.50.0",
     "@vue/apollo-composable": "^4.0.0-beta.4",
+    "add": "^2.0.6",
     "esm": "^3.2.25",
     "graphql-tag": "^2.12.6",
+    "module": "^1.2.5",
+    "nuxi": "^3.20.0",
     "nuxt-graphql-client": "^0.2.27",
+    "nuxt-mdi": "^2.1.1",
     "pinia": "^2.0.35",
     "reset-css": "^5.0.1",
     "vue-yandex-maps": "^1.1.0"

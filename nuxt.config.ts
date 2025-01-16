@@ -1,4 +1,5 @@
 import graphql from '@rollup/plugin-graphql';
+
 // const runtimeConfig = useRuntimeConfig();
 
 export default defineNuxtConfig({
@@ -40,6 +41,9 @@ export default defineNuxtConfig({
       '@nuxtjs/apollo',
       '@pinia/nuxt',
       '@nuxt/image',
+
+      // https://pictogrammers.com/library/mdi/icon/chevron-right/
+      'nuxt-mdi'
     ],
     image: {
       inject: true
