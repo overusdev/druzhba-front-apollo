@@ -4,8 +4,7 @@
       <div class="main__head">
         <div class="main__last-news">
           <p class="main__last-news-title" v-html="newsData.name"></p>
-          <p class="main__last-news-description" v-html="newsData.theme"></p>
-
+          <span v-if="newsData.theme" class="main__last-news-description" v-html="newsData.theme"/>
           <Nuxt-link class="main__last-news-more" :to="`/news/${newsData.id}`">
             Подробнее
           </Nuxt-link>

@@ -13,9 +13,7 @@
             v-html="doc.description"
         ></p> -->
         <PageTitle :title="docsData.title"/>
-        <p class="news-item__note-description" v-html="docsData.theme"
-        ></p>
-
+        <p class="news-item__note-description" v-html="docsData.theme"/>
       </div>
     </div>
 </template>
