@@ -1,7 +1,5 @@
 import graphql from '@rollup/plugin-graphql';
 
-// const runtimeConfig = useRuntimeConfig();
-
 export default defineNuxtConfig({
     app: {
       head: {
@@ -50,7 +48,9 @@ export default defineNuxtConfig({
     },
     plugins: [
       { src: '~/plugins/ymapPlugin.js',  mode: 'client' },
-      { src: '~/plugins/apollo.js',  mode: 'client' },
+      { src: '~/plugins/apollo.js' },
+      // { src: '~/plugins/apollo.js',  mode: 'client' },
+      { src: '~/plugins/apollo-error.js' },
     ],
     apollo: {
       autoImports: true,
