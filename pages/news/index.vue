@@ -21,13 +21,10 @@
 
 <script lang="js">
 import PageTitle from '~/components/page-title/PageTitle';
-import { useNews } from "~/stores/news";
 
 export default {
   components: { PageTitle },
   setup () {
-    const storeNews = useNews();
-    // const allNews = storeNews.news.reverse();
     const newsData = ref({
         name: '',
         theme: '',

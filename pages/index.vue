@@ -2,17 +2,21 @@
   <div class="main">
     <div class="container">
       <div class="main__head">
-        <div class="main__last-news">
-          <p class="main__last-news-title" v-html="newsData.name"></p>
-          <span v-if="newsData.mainPageText" class="main__last-news-description" v-html="newsData.mainPageText"/>
-          <Nuxt-link class="main__last-news-more" :to="`/news/${newsData.id}`">
-            Подробнее
-            <MdiIcon
-              icon="mdiChevronRight"
-              class="main__last-news-icon-right"
-            />
-          </Nuxt-link>
-        </div>
+          <div v-if="result.news.length" class="main__last-news">
+            <p class="main__last-news-title">{{ result.news[0].name }}</p>
+            <span
+              v-if="result.news[0].main_page_text"
+              class="main__last-news-description">
+              {{ result.news[0].main_page_text }}
+            </span>
+            <Nuxt-link class="main__last-news-more" :to="`/news/${result.news[0].id}`">
+              Подробнее
+              <MdiIcon
+                icon="mdiChevronRight"
+                class="main__last-news-icon-right"
+              />
+            </Nuxt-link>
+          </div>
 
         <img src="~/assets/images/garden.png" alt="Лого" class="main__pic">
       </div>
@@ -24,14 +28,14 @@
   </div>
 </template>
 
-<script setup lang="ts">
+<script lang="js">
+import MainBlocks from '~/components/main-blocks/MainBlocks.vue';
 import { useMain } from '~/stores/mainItems';
 import gql from 'graphql-tag';
 
-    definePageMeta({
-      layout: "default",
-    });
-
+export default {
+  components: { MainBlocks },
+  setup() {
     const storeMain = useMain();
     const mainItems = storeMain.getMainItems();
     const newsData = ref({
@@ -42,29 +46,26 @@ import gql from 'graphql-tag';
       date: '',
     });
     const NEWS = gql`
-            query findAll($take: Int!) {
-                news(take: $take) {
-                  id
-                  name
-                  theme
-                  main_page_text
-                  date
-                }
+        query findAll($take: Int!) {
+            news(take: $take) {
+              id
+              name
+              theme
+              main_page_text
+              date
             }
-        `;
-    async function initPets() {
-      const { data } = await useAsyncQuery(NEWS, { take: 500 });
+        }
+    `;
 
-      if (data?.value?.news) {
-        newsData.value.id = data.value.news[0].id;
-        newsData.value.name = data.value.news[0].name;
-        newsData.value.theme = data.value.news[0].theme;
-        newsData.value.date = data.value.news[0].date;
-        newsData.value.mainPageText = data.value.news[0].main_page_text;
-      }
+    const { result } = useQuery(NEWS, { take: 500 });
+
+    return {
+      result,
+      newsData,
+      mainItems
     }
-
-    await initPets();
+  }
+}
 </script>
 
 <style lang="scss" scoped>

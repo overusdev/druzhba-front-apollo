@@ -5,7 +5,7 @@
       <div class="docs__item-wrapper">
         <template v-if="result.docs.length">
             <NuxtLink
-                v-for="item in result?.docs"
+                v-for="item in result.docs"
                 :key="item.id"
                 :to="`/docs/${item.id}`"
                 class="docs__item-link"
