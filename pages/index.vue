@@ -2,11 +2,13 @@
   <div class="main">
     <div class="container">
       <div class="main__head">
-          <div v-if="result.news.length" class="main__last-news">
+        <div v-if="result?.news?.length" class="main__head-wrapper">
+            <div class="main__last-news">
             <p class="main__last-news-title">{{ result.news[0].name }}</p>
             <span
               v-if="result.news[0].main_page_text"
-              class="main__last-news-description">
+              class="main__last-news-description"
+            >
               {{ result.news[0].main_page_text }}
             </span>
             <Nuxt-link class="main__last-news-more" :to="`/news/${result.news[0].id}`">
@@ -17,6 +19,7 @@
               />
             </Nuxt-link>
           </div>
+        </div>
 
         <img src="~/assets/images/garden.png" alt="Лого" class="main__pic">
       </div>
@@ -32,6 +35,10 @@
 import MainBlocks from '~/components/main-blocks/MainBlocks.vue';
 import { useMain } from '~/stores/mainItems';
 import gql from 'graphql-tag';
+
+definePageMeta({
+  layout: 'default'
+})
 
 export default {
   components: { MainBlocks },
