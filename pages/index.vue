@@ -57,7 +57,11 @@ export default {
         }
     `;
 
-    const { result } = useQuery(NEWS, { take: 500 });
+    const { result } = useQuery(
+      NEWS,
+      { take: 500 },
+      { fetchPolicy: "no-cache" }
+    );
 
     return {
       result,
