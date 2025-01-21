@@ -4,7 +4,7 @@
       <div class="main__head">
         <div class="main__last-news">
           <p class="main__last-news-title" v-html="newsData.name"></p>
-          <span v-if="newsData.theme" class="main__last-news-description" v-html="newsData.theme"/>
+          <span v-if="newsData.mainPageText" class="main__last-news-description" v-html="newsData.mainPageText"/>
           <Nuxt-link class="main__last-news-more" :to="`/news/${newsData.id}`">
             Подробнее
             <MdiIcon
@@ -38,6 +38,7 @@ import gql from 'graphql-tag';
       id: '',
       name: '',
       theme: '',
+      mainPageText: '',
       date: '',
     });
     const NEWS = gql`
@@ -46,6 +47,7 @@ import gql from 'graphql-tag';
                   id
                   name
                   theme
+                  main_page_text
                   date
                 }
             }
@@ -58,6 +60,7 @@ import gql from 'graphql-tag';
         newsData.value.name = data.value.news[0].name;
         newsData.value.theme = data.value.news[0].theme;
         newsData.value.date = data.value.news[0].date;
+        newsData.value.mainPageText = data.value.news[0].main_page_text;
       }
     }
 
@@ -101,6 +104,7 @@ import gql from 'graphql-tag';
   }
 
   &__last-news-description {
+    display: block;
     font-style: normal;
     font-weight: 400;
     font-size: 16px;

@@ -74,6 +74,11 @@ export default {
       strong {
         font-weight: bold !important;
       }
+
+      :deep(img) {
+        width: 100%;
+        height: auto;
+      }
     }
 
     &__image {

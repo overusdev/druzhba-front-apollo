@@ -13,7 +13,7 @@
             v-html="doc.description"
         ></p> -->
         <PageTitle :title="docsData.title"/>
-        <p class="news-item__note-description" v-html="docsData.theme"/>
+        <p class="docs-item__note-description" v-html="docsData.theme"/>
       </div>
     </div>
 </template>
@@ -86,6 +86,10 @@ export default {
     &__note-description {
       margin-top: 24px;
       line-height: 1.8;
+      :deep(img) {
+        width: 100%;
+        height: auto;
+      }
     }
 
     &__image {

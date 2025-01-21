@@ -64,6 +64,11 @@ export default {
     &__note-description {
       margin-top: 24px;
       line-height: 1.8;
+
+      :deep(img) {
+        width: 100%;
+        height: auto;
+      }
     }
 
     &__image {
