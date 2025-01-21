@@ -143,7 +143,6 @@
         }
 
         &__item {
-
             &--inner {
                 position: absolute;
                 font-weight: 400;
@@ -152,9 +151,10 @@
                 line-height: 24px;
                 text-transform: none;
                 top: 64px;
-                    left: 36px;
+                left: 36px;
 
                 @include desktop {
+                    max-width: 285px;
                     top: 64px;
                     left: 36px;
                 }
